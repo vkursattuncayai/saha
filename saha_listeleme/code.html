@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+
+<html lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1db954",
+                        "background-light": "#f6f8f7",
+                        "background-dark": "#122017",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<title>SahaBul | Halı Saha Rezervasyon</title>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100">
+<div class="relative flex min-h-screen flex-col overflow-x-hidden">
+<!-- Navigation Bar -->
+<header class="sticky top-0 z-50 w-full border-b border-primary/10 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md px-4 md:px-10 py-3">
+<div class="mx-auto flex max-w-7xl items-center justify-between gap-8">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined text-3xl font-bold">sports_soccer</span>
+<h1 class="text-2xl font-extrabold tracking-tight text-slate-900 dark:text-slate-100">SahaBul</h1>
+</div>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-sm font-semibold hover:text-primary transition-colors" href="#">Sahalar</a>
+<a class="text-sm font-semibold hover:text-primary transition-colors" href="#">Ligler</a>
+<a class="text-sm font-semibold hover:text-primary transition-colors" href="#">Turnuvalar</a>
+</nav>
+</div>
+<div class="flex flex-1 justify-end items-center gap-4">
+<div class="hidden lg:flex relative w-full max-w-xs">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-primary">search</span>
+<input class="w-full rounded-xl border-none bg-primary/10 pl-10 pr-4 py-2 text-sm focus:ring-2 focus:ring-primary outline-none" placeholder="Saha veya bölge ara..." type="text"/>
+</div>
+<button id="dark-toggle" class="flex items-center justify-center rounded-xl bg-primary/10 p-2 text-slate-900 dark:text-slate-100 hover:bg-primary/20 transition-all">
+<span class="material-symbols-outlined">dark_mode</span>
+</button>
+<button id="nav-login-btn" class="text-sm font-bold hover:text-primary">Giriş Yap</button>
+<button id="nav-register-btn" class="rounded-full bg-primary px-4 py-2 text-sm font-bold text-white hover:bg-primary/90 transition-all">Kayıt Ol</button>
+<div id="nav-user-menu" class="hidden items-center gap-2">
+  <button id="nav-panel-link" class="flex items-center gap-1 text-sm font-semibold hover:text-primary transition-colors">
+    <span class="material-symbols-outlined text-sm">account_circle</span>
+    <span id="nav-user-name">Hesabım</span>
+  </button>
+  <button id="nav-logout-btn" class="text-xs text-slate-500 hover:text-red-500 transition-colors">Çıkış</button>
+</div>
+</div>
+</div>
+</header>
+<main class="mx-auto w-full max-w-7xl flex-1 px-4 py-8 md:px-10">
+<div class="flex flex-col lg:flex-row gap-8">
+<!-- Sidebar Filters -->
+<aside class="w-full lg:w-72 shrink-0 space-y-6">
+<div class="rounded-xl border border-primary/10 bg-white dark:bg-slate-900 p-6 shadow-sm">
+<div class="flex items-center justify-between mb-4">
+<h2 class="text-lg font-bold">Filtrele</h2>
+<button id="filter-clear-btn" class="text-xs font-bold text-primary hover:underline">Temizle</button>
+</div>
+<!-- City/District Selection -->
+<div class="space-y-4">
+<div class="space-y-2">
+<label class="text-xs font-bold uppercase tracking-wider text-slate-400">Konum</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-primary text-sm">location_on</span>
+<select id="filter-city" class="w-full rounded-lg border-none bg-primary/5 pl-9 pr-4 py-2.5 text-sm focus:ring-2 focus:ring-primary">
+<option value="">Tüm Şehirler</option>
+<option value="İstanbul">İstanbul</option>
+<option value="Ankara">Ankara</option>
+<option value="İzmir">İzmir</option>
+</select>
+</div>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-primary text-sm">map</span>
+<select id="filter-district" class="w-full rounded-lg border-none bg-primary/5 pl-9 pr-4 py-2.5 text-sm focus:ring-2 focus:ring-primary">
+<option value="">Tüm İlçeler</option>
+<option value="Kadıköy">Kadıköy</option>
+<option value="Beşiktaş">Beşiktaş</option>
+<option value="Şişli">Şişli</option>
+<option value="Üsküdar">Üsküdar</option>
+<option value="Maltepe">Maltepe</option>
+<option value="Kartal">Kartal</option>
+<option value="Beylikdüzü">Beylikdüzü</option>
+<option value="Bakırköy">Bakırköy</option>
+<option value="Fatih">Fatih</option>
+<option value="Ümraniye">Ümraniye</option>
+</select>
+</div>
+</div>
+<!-- Price Range -->
+<div class="space-y-2">
+<label class="text-xs font-bold uppercase tracking-wider text-slate-400">Fiyat Aralığı (Saatlik)</label>
+<input id="filter-max-price" class="w-full accent-primary" max="1000" min="100" step="50" type="range" value="1000"/>
+<div class="flex justify-between text-xs font-medium">
+<span>₺100</span>
+<span id="price-display">₺1000+</span>
+</div>
+</div>
+<!-- Field Type -->
+<div class="space-y-2 pt-2">
+<label class="text-xs font-bold uppercase tracking-wider text-slate-400">Saha Tipi</label>
+<div class="space-y-2">
+<label class="flex items-center gap-3 cursor-pointer group">
+<input id="filter-type-acik" value="Açık Saha" class="rounded text-primary focus:ring-primary h-5 w-5 bg-primary/5 border-none" type="checkbox"/>
+<span class="text-sm font-medium group-hover:text-primary transition-colors">Açık Saha</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input id="filter-type-kapali" value="Kapalı Saha" class="rounded text-primary focus:ring-primary h-5 w-5 bg-primary/5 border-none" type="checkbox"/>
+<span class="text-sm font-medium group-hover:text-primary transition-colors">Kapalı Saha</span>
+</label>
+</div>
+</div>
+<!-- Rating -->
+<div class="space-y-2 pt-2">
+<label class="text-xs font-bold uppercase tracking-wider text-slate-400">Minimum Puan</label>
+<div class="flex gap-1">
+<button id="filter-rating-4" data-rating="4" class="h-8 w-full rounded bg-primary/10 text-primary text-xs font-bold border border-primary/20">4.0+</button>
+<button id="filter-rating-45" data-rating="4.5" class="h-8 w-full rounded bg-primary/10 text-primary text-xs font-bold border border-primary/20">4.5+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Map Integration Placeholder -->
+<div class="relative overflow-hidden rounded-xl h-48 bg-primary/5 border border-primary/10 group cursor-pointer">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" data-alt="Simplified map view of soccer fields in Istanbul" data-location="Istanbul" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCDO0Xv50CKznL_hNnScxrp8gDwv_waQBbWQfDQVN66PA2c2cxkrvYJVYsRz84i_EjneUB2EeYj9-sQcoDgcpHW3pC7bpplPSY_VkyY-O2_Qs1yOnRkJQMlv_yg5N7Oh0nB4MkX94dyrARZEKrPu8ISJD9T9vVGBKy7K3egHAxs3JoNsSSUoatYrsCayobXpkivC2yByFUJxPw-ycXt9Fqbd3irkEvPLt5zlnCaRzviUQXAGJK52g9dLm8lLcAvQSccpO5VnJ8ntVE');"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-4">
+<span class="text-white text-sm font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-base">map</span> Haritada Gör
+                            </span>
+</div>
+</div>
+</aside>
+<!-- Field Grid -->
+<div class="flex-1 space-y-6">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<h2 class="text-3xl font-black tracking-tight text-slate-900 dark:text-slate-100">Futbol Sahaları</h2>
+<p id="fields-count" class="text-slate-500 dark:text-slate-400">Yükleniyor...</p>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-sm font-medium text-slate-400">Sırala:</span>
+<select id="sort-select" class="rounded-lg border-none bg-primary/10 px-4 py-2 text-sm font-bold focus:ring-2 focus:ring-primary">
+<option value="popular">En Popüler</option>
+<option value="price_asc">Fiyat (Düşükten Yükseğe)</option>
+<option value="rating">En Yüksek Puan</option>
+<option value="newest">En Yeni</option>
+</select>
+</div>
+</div>
+<!-- Cards Grid - Dinamik -->
+<div id="fields-grid" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+  <div class="col-span-3 text-center py-12 text-slate-400">
+    <span class="material-symbols-outlined text-4xl">sports_soccer</span>
+    <p class="mt-2">Sahalar yükleniyor...</p>
+  </div>
+</div>
+<!-- Pagination -->
+<div id="pagination" class="flex items-center justify-center gap-2 pt-8"></div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="mt-auto border-t border-primary/10 bg-white dark:bg-slate-900 px-4 py-12">
+<div class="mx-auto max-w-7xl">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-10">
+<div class="space-y-4">
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined text-3xl font-bold">sports_soccer</span>
+<span class="text-2xl font-extrabold tracking-tight text-slate-900 dark:text-slate-100">SahaBul</span>
+</div>
+<p class="text-sm text-slate-500 leading-relaxed">
+                            En uygun halı sahayı bulmak ve hızlıca rezervasyon yapmak için Türkiye'nin en büyük spor platformu.
+                        </p>
+</div>
+<div>
+<h4 class="mb-4 text-sm font-bold uppercase tracking-widest text-primary">Keşfet</h4>
+<ul class="space-y-2 text-sm text-slate-500">
+<li><a class="hover:text-primary transition-colors" href="#">Tüm Sahalar</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Yakınımdakiler</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Turnuvalar</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Haftalık Fırsatlar</a></li>
+</ul>
+</div>
+<div>
+<h4 class="mb-4 text-sm font-bold uppercase tracking-widest text-primary">Kurumsal</h4>
+<ul class="space-y-2 text-sm text-slate-500">
+<li><a class="hover:text-primary transition-colors" href="#">Hakkımızda</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Saha Sahibi Olun</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">İletişim</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Gizlilik Politikası</a></li>
+</ul>
+</div>
+<div>
+<h4 class="mb-4 text-sm font-bold uppercase tracking-widest text-primary">Abone Ol</h4>
+<p class="mb-4 text-xs text-slate-500 italic">Yeni sahalardan ve indirimlerden haberdar olun.</p>
+<div class="flex gap-2">
+<input class="w-full rounded-lg border-none bg-primary/5 px-4 py-2 text-sm focus:ring-2 focus:ring-primary" placeholder="E-posta" type="email"/>
+<button class="rounded-lg bg-primary p-2 text-white">
+<span class="material-symbols-outlined">send</span>
+</button>
+</div>
+</div>
+</div>
+<div class="mt-12 border-t border-primary/5 pt-8 text-center text-xs text-slate-400">
+                    © 2024 SahaBul Spor Teknolojileri A.Ş. Tüm hakları saklıdır.
+                </div>
+</div>
+</footer>
+</div>
+
+<!-- Auth Modal -->
+<div id="auth-modal-placeholder"></div>
+
+<script src="/frontend/shared/js/api.js"></script>
+<script src="/frontend/shared/js/auth.js"></script>
+<script src="/frontend/shared/js/router.js"></script>
+<script src="/frontend/shared/js/ui.js"></script>
+<script src="/saha_listeleme/main.js"></script>
+</body></html>

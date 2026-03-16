@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+
+<html lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1db954",
+                        "background-light": "#f6f8f7",
+                        "background-dark": "#122017",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<title>SahaBul - Halı Sahanı Kolayca Rezerve Et</title>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100">
+<div class="relative flex min-h-screen flex-col overflow-x-hidden">
+<header class="sticky top-0 z-50 w-full border-b border-primary/10 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md">
+<div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 md:px-8">
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined text-3xl font-bold">sports_soccer</span>
+<h1 class="text-2xl font-extrabold tracking-tight text-slate-900 dark:text-slate-100">SahaBul</h1>
+</div>
+<nav class="hidden items-center gap-8 md:flex">
+<a class="text-sm font-semibold hover:text-primary transition-colors" href="/saha_listeleme/code.html">Saha Ara</a>
+<a id="nav-panel-link-2" class="text-sm font-semibold hover:text-primary transition-colors cursor-pointer" href="#">Rezervasyonlarım</a>
+<a class="text-sm font-semibold hover:text-primary transition-colors" href="#">Kampanyalar</a>
+<a class="text-sm font-semibold hover:text-primary transition-colors" href="#">Destek</a>
+</nav>
+<div class="flex items-center gap-4">
+<button id="dark-toggle" class="text-slate-500 hover:text-primary transition-colors hidden md:block">
+  <span class="material-symbols-outlined">dark_mode</span>
+</button>
+<button id="nav-login-btn" class="hidden text-sm font-bold md:block hover:text-primary">Giriş Yap</button>
+<button id="nav-register-btn" class="rounded-full bg-primary px-6 py-2.5 text-sm font-bold text-background-dark shadow-lg shadow-primary/20 hover:scale-105 transition-transform">
+                        Kayıt Ol
+                    </button>
+<div id="nav-user-menu" class="hidden items-center gap-3">
+  <a id="nav-panel-link" href="#" class="text-sm font-semibold hover:text-primary transition-colors flex items-center gap-1">
+    <span class="material-symbols-outlined text-sm">account_circle</span>
+    <span id="nav-user-name">Hesabım</span>
+  </a>
+  <button id="nav-logout-btn" class="text-xs text-slate-500 hover:text-red-500 transition-colors">Çıkış</button>
+</div>
+</div>
+</div>
+</header>
+<main class="flex-grow">
+<section class="relative flex min-h-[600px] flex-col items-center justify-center px-4 py-20 text-center">
+<div class="absolute inset-0 -z-10 overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-b from-background-dark/60 via-background-dark/40 to-background-light dark:to-background-dark"></div>
+<img alt="Green football field at night" class="h-full w-full object-cover" data-alt="Wide shot of a professional green football field at night" src="https://lh3.googleusercontent.com/aida-public/AB6AXuChXtCTYnhHjSD4i9JlruZ6N91LI0nnD7Hs0-IdoidJiiy1iMBZmjO4SBqDObfwkHjs5Sb80VZDhqKgoi3RHqidbdBk09b-Eq5nMDvpXSBuI7OHBQu8rnT0dnwOh2ZGkb2zucmXWBEYAN5l7qd-88zqDZXa_c89iMyvZ2b5A9v_x79qiDrzyFCTiSCIny4Lm1rDPvxEbmph0LRCUGZNSo9LxBqzecbae6XH7C0iHzkUZIBlsTbv16M3thYAYGsALqHS3qsgoO-lubo"/>
+</div>
+<div class="mx-auto max-w-4xl space-y-6">
+<h2 class="text-4xl font-extrabold tracking-tight text-white md:text-6xl lg:text-7xl">
+                        Halı Sahanı <span class="text-primary">Kolayca</span> Rezerve Et
+                    </h2>
+<p class="mx-auto max-w-2xl text-lg text-slate-200 md:text-xl">
+                        Şehrindeki en iyi halı sahaları keşfet, müsaitlik durumunu gör ve saniyeler içinde yerini ayırt.
+                    </p>
+<div class="mx-auto mt-10 w-full max-w-5xl rounded-2xl bg-white p-4 shadow-2xl dark:bg-slate-900 md:rounded-full md:p-2">
+<div class="flex flex-col items-center gap-2 md:flex-row">
+<div class="flex w-full flex-1 items-center gap-3 px-4 py-2">
+<span class="material-symbols-outlined text-primary">location_on</span>
+<input id="hero-location" class="w-full border-none bg-transparent focus:ring-0 dark:placeholder-slate-400" placeholder="Şehir veya İlçe" type="text"/>
+</div>
+<div class="h-8 w-px bg-slate-200 dark:bg-slate-700 hidden md:block"></div>
+<div class="flex w-full flex-1 items-center gap-3 px-4 py-2">
+<span class="material-symbols-outlined text-primary">calendar_today</span>
+<input id="hero-date" class="w-full border-none bg-transparent focus:ring-0 dark:placeholder-slate-400" type="date"/>
+</div>
+<div class="h-8 w-px bg-slate-200 dark:bg-slate-700 hidden md:block"></div>
+<div class="flex w-full flex-1 items-center gap-3 px-4 py-2">
+<span class="material-symbols-outlined text-primary">schedule</span>
+<select id="hero-time" class="w-full border-none bg-transparent focus:ring-0 dark:placeholder-slate-400">
+<option value="">Tüm Saatler</option>
+<option value="18:00">18:00 - 19:00</option>
+<option value="19:00">19:00 - 20:00</option>
+<option value="20:00">20:00 - 21:00</option>
+<option value="21:00">21:00 - 22:00</option>
+</select>
+</div>
+<button id="hero-search-btn" class="w-full rounded-xl bg-primary px-8 py-4 text-sm font-bold text-background-dark transition-all hover:bg-primary/90 md:w-auto md:rounded-full">
+                                Saha Bul
+                            </button>
+</div>
+</div>
+</div>
+</section>
+<section class="mx-auto max-w-7xl px-4 py-24 md:px-8">
+<div class="mb-12 flex items-end justify-between">
+<div class="space-y-2">
+<h3 class="text-3xl font-bold tracking-tight">Popüler Halı Sahalar</h3>
+<p class="text-slate-500 dark:text-slate-400">Şehrindeki en çok tercih edilen, yüksek puanlı sahalar.</p>
+</div>
+<a class="hidden font-bold text-primary hover:underline md:block" href="#">Tümünü Gör</a>
+</div>
+<div id="popular-fields-grid" class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+<div class="group overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition-all hover:shadow-xl dark:border-slate-800 dark:bg-slate-900">
+<div class="relative h-56 w-full overflow-hidden">
+<img alt="Football field" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Close up of a football field penalty spot" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUXqmz7UD5mPLmuT0EfKz79xQQg_erv3YSXOQnT9umgBOZKZstCeY8YVpQ5aW9M5gZ-VAsxpbzyRJ78JQgH89acZxETLWivODX_ORjk_22qgWDP0oyEOktcBhYDTtVJNkFGHj3Sk1IGtoZ4tfHXcCh1cKYjkzaXyjzopuq2v7ysH6yopCVZL1Avks_UrFJrGrrVzPCMonT59rGUdEyOZWeU0EBWD10hA87F-rN5-1lhGORpeSd9n59JBBT2b8mYDzie7tdRWJTDZE"/>
+<div class="absolute right-3 top-3 rounded-full bg-white/90 px-3 py-1 text-xs font-bold text-slate-900 backdrop-blur">
+                                4.8 ★
+                            </div>
+</div>
+<div class="p-5">
+<div class="mb-2 flex items-center justify-between">
+<h4 class="text-xl font-bold">Arena Spor Tesisleri</h4>
+<span class="text-lg font-bold text-primary">₺450<span class="text-xs font-normal text-slate-500">/saat</span></span>
+</div>
+<div class="mb-4 flex items-center gap-1 text-sm text-slate-500">
+<span class="material-symbols-outlined text-sm">location_on</span>
+                                Kadıköy, İstanbul
+                            </div>
+<div class="flex gap-2">
+<span class="rounded-lg bg-primary/10 px-3 py-1 text-xs font-medium text-primary">Açık Saha</span>
+<span class="rounded-lg bg-primary/10 px-3 py-1 text-xs font-medium text-primary">Kafeterya</span>
+<span class="rounded-lg bg-primary/10 px-3 py-1 text-xs font-medium text-primary">Otopark</span>
+</div>
+</div>
+</div>
+<div class="group overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition-all hover:shadow-xl dark:border-slate-800 dark:bg-slate-900">
+<div class="relative h-56 w-full overflow-hidden">
+<img alt="Indoor football field" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Indoor synthetic turf football field" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQ5-6lW-RolQEX7chZQpmbuVYQDWdngVAxYjwy2sRRihMQFZoz55GmLQ4VP3AKyAytR77DO_FKVxVJ3aFsuHxKkohJoXYiaIQro06TX1imNo2wC8Zp_DuHXO0A2pEXbt7q4dflC3VHK69ecCuHXoVqEZxbLZ55CSoPbXxap0DzL3YL0IsJy_QghgKuczx7_eU6S5X7ForMcJZo8W3cAiYJMmGJ02-R7YpqEcQ7zRmM4VIeB9eYXe1Uwlmo1sGEl5YDIJMEUI2qYIE"/>
+<div class="absolute right-3 top-3 rounded-full bg-white/90 px-3 py-1 text-xs font-bold text-slate-900 backdrop-blur">
+                                4.9 ★
+                            </div>
+</div>
+<div class="p-5">
+<div class="mb-2 flex items-center justify-between">
+<h4 class="text-xl font-bold">Göztepe Park Arena</h4>
+<span class="text-lg font-bold text-primary">₺500<span class="text-xs font-normal text-slate-500">/saat</span></span>
+</div>
+<div class="mb-4 flex items-center gap-1 text-sm text-slate-500">
+<span class="material-symbols-outlined text-sm">location_on</span>
+                                Göztepe, İstanbul
+                            </div>
+<div class="flex gap-2">
+<span class="rounded-lg bg-primary/10 px-3 py-1 text-xs font-medium text-primary">Kapalı Saha</span>
+<span class="rounded-lg bg-primary/10 px-3 py-1 text-xs font-medium text-primary">Duş</span>
+<span class="rounded-lg bg-primary/10 px-3 py-1 text-xs font-medium text-primary">Kiralık Ekipman</span>
+</div>
+</div>
+</div>
+<div class="group overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition-all hover:shadow-xl dark:border-slate-800 dark:bg-slate-900">
+<div class="relative h-56 w-full overflow-hidden">
+<img alt="Football action" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Action shot of a football match on turf" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDUmkeAomavMyGEwrVuUFaR8S3rmykxIHKSkj07S3qKaa10TMsS53z5ObcfFjPxYZzkUj6oftxqnKTG2xtcA-K4irui5i8zCqCqXz9eR0_PnKr3ln8vR8zlunBy-j5QF9l-FV_Ttbk2KrQkZhOrpFCH2OpaAKgN-bgpSnv3tVmUTGoeTk_U1HViGbFAObIFlY1hILd7zyyp3WXeNUr5oqrh6qdfqV4CF2HRyoN2AZjR-b7bTtN5aUbA7knR678sX-QXJga327py8rs"/>
+<div class="absolute right-3 top-3 rounded-full bg-white/90 px-3 py-1 text-xs font-bold text-slate-900 backdrop-blur">
+                                4.7 ★
+                            </div>
+</div>
+<div class="p-5">
+<div class="mb-2 flex items-center justify-between">
+<h4 class="text-xl font-bold">Şampiyonlar Kompleksi</h4>
+<span class="text-lg font-bold text-primary">₺400<span class="text-xs font-normal text-slate-500">/saat</span></span>
+</div>
+<div class="mb-4 flex items-center gap-1 text-sm text-slate-500">
+<span class="material-symbols-outlined text-sm">location_on</span>
+                                Beşiktaş, İstanbul
+                            </div>
+<div class="flex gap-2">
+<span class="rounded-lg bg-primary/10 px-3 py-1 text-xs font-medium text-primary">7x7 Saha</span>
+<span class="rounded-lg bg-primary/10 px-3 py-1 text-xs font-medium text-primary">Tribün</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="bg-primary/5 py-24">
+<div class="mx-auto max-w-7xl px-4 md:px-8">
+<div class="mb-16 text-center">
+<h3 class="text-3xl font-bold tracking-tight md:text-4xl">Nasıl Çalışır?</h3>
+<p class="mt-4 text-slate-500 dark:text-slate-400">3 basit adımda maçını organize et.</p>
+</div>
+<div class="grid gap-12 md:grid-cols-3">
+<div class="flex flex-col items-center text-center">
+<div class="mb-6 flex h-20 w-20 items-center justify-center rounded-2xl bg-primary text-background-dark shadow-xl shadow-primary/20">
+<span class="material-symbols-outlined text-4xl">search</span>
+</div>
+<h5 class="mb-3 text-xl font-bold">Sahanı Ara</h5>
+<p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+                                Şehrindeki halı sahaları filtrele, konumuna en yakın olanı seç ve özelliklerini incele.
+                            </p>
+</div>
+<div class="flex flex-col items-center text-center">
+<div class="mb-6 flex h-20 w-20 items-center justify-center rounded-2xl bg-primary text-background-dark shadow-xl shadow-primary/20">
+<span class="material-symbols-outlined text-4xl">event_available</span>
+</div>
+<h5 class="mb-3 text-xl font-bold">Zamanını Seç</h5>
+<p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+                                Sahanın güncel doluluk takviminden sana en uygun saati belirle ve bilgilerini gir.
+                            </p>
+</div>
+<div class="flex flex-col items-center text-center">
+<div class="mb-6 flex h-20 w-20 items-center justify-center rounded-2xl bg-primary text-background-dark shadow-xl shadow-primary/20">
+<span class="material-symbols-outlined text-4xl">check_circle</span>
+</div>
+<h5 class="mb-3 text-xl font-bold">Rezervasyon Tamam</h5>
+<p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+                                Ödemeni ister online ister sahada yap, rezervasyon onay kodun cebine gelsin.
+                            </p>
+</div>
+</div>
+</div>
+</section>
+<section class="mx-auto max-w-5xl px-4 py-24 text-center">
+<div class="rounded-3xl bg-primary p-12 text-background-dark shadow-2xl">
+<h3 class="text-3xl font-extrabold md:text-4xl">Hemen Oynamaya Hazır mısın?</h3>
+<p class="mt-4 text-lg font-medium opacity-90">Arkadaşlarını topla, sahanı rezerve et ve heyecana ortak ol.</p>
+<div class="mt-10 flex flex-wrap justify-center gap-4">
+<button class="rounded-full bg-background-dark px-10 py-4 font-bold text-primary transition-all hover:scale-105">
+                            Şimdi Rezervasyon Yap
+                        </button>
+<button class="rounded-full border-2 border-background-dark px-10 py-4 font-bold transition-all hover:bg-background-dark hover:text-primary">
+                            Tesisini Kaydet
+                        </button>
+</div>
+</div>
+</section>
+</main>
+<footer class="border-t border-slate-200 bg-white py-16 dark:border-slate-800 dark:bg-slate-900">
+<div class="mx-auto max-w-7xl px-4 md:px-8">
+<div class="grid gap-12 md:grid-cols-4">
+<div class="col-span-1 md:col-span-1">
+<div class="mb-6 flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined text-3xl font-bold">sports_soccer</span>
+<span class="text-2xl font-extrabold tracking-tight text-slate-900 dark:text-slate-100">SahaBul</span>
+</div>
+<p class="text-sm text-slate-500 dark:text-slate-400">Türkiye'nin en gelişmiş halı saha rezervasyon platformu.</p>
+<div class="mt-6 flex gap-4">
+<a class="text-slate-400 hover:text-primary" href="#"><span class="material-symbols-outlined">social_leaderboard</span></a>
+<a class="text-slate-400 hover:text-primary" href="#"><span class="material-symbols-outlined">photo_camera</span></a>
+<a class="text-slate-400 hover:text-primary" href="#"><span class="material-symbols-outlined">alternate_email</span></a>
+</div>
+</div>
+<div>
+<h6 class="mb-6 font-bold uppercase tracking-wider text-slate-900 dark:text-slate-100">Kullanıcılar</h6>
+<ul class="space-y-4 text-sm text-slate-500">
+<li><a class="hover:text-primary" href="#">Nasıl Rezervasyon Yapılır?</a></li>
+<li><a class="hover:text-primary" href="#">Sıkça Sorulan Sorular</a></li>
+<li><a class="hover:text-primary" href="#">Mobil Uygulama</a></li>
+<li><a class="hover:text-primary" href="#">İptal Politikası</a></li>
+</ul>
+</div>
+<div>
+<h6 class="mb-6 font-bold uppercase tracking-wider text-slate-900 dark:text-slate-100">Tesis Sahipleri</h6>
+<ul class="space-y-4 text-sm text-slate-500">
+<li><a class="hover:text-primary" href="#">Tesisini Sisteme Ekle</a></li>
+<li><a class="hover:text-primary" href="#">Yönetici Paneli</a></li>
+<li><a class="hover:text-primary" href="#">Avantajlarımız</a></li>
+<li><a class="hover:text-primary" href="#">Partnerlerimiz</a></li>
+</ul>
+</div>
+<div>
+<h6 class="mb-6 font-bold uppercase tracking-wider text-slate-900 dark:text-slate-100">Bize Ulaşın</h6>
+<ul class="space-y-4 text-sm text-slate-500">
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-xs">mail</span> iletisim@sahabul.com</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-xs">phone</span> 0850 123 45 67</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-xs">location_on</span> İstanbul, Türkiye</li>
+</ul>
+</div>
+</div>
+<div class="mt-16 border-t border-slate-100 pt-8 text-center text-xs text-slate-400 dark:border-slate-800">
+<p>© 2024 SahaBul. Tüm Hakları Saklıdır.</p>
+</div>
+</div>
+</footer>
+</div>
+
+<!-- Auth Modal -->
+<div id="auth-modal-placeholder"></div>
+
+<script src="/frontend/shared/js/api.js"></script>
+<script src="/frontend/shared/js/auth.js"></script>
+<script src="/frontend/shared/js/router.js"></script>
+<script src="/frontend/shared/js/ui.js"></script>
+<script src="/ana_sayfa/main.js"></script>
+</body></html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+
+<html lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1db954",
+                        "background-light": "#f6f8f7",
+                        "background-dark": "#122017",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<title>SahaBul - Kullanıcı Paneli</title>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 transition-colors duration-300">
+<div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<!-- Top Navigation Bar -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-primary/10 px-6 py-4 md:px-20 lg:px-40 bg-background-light dark:bg-background-dark sticky top-0 z-50">
+<div class="flex items-center gap-3">
+<div class="flex items-center justify-center size-10 bg-primary rounded-lg text-white">
+<span class="material-symbols-outlined">sports_soccer</span>
+</div>
+<h2 class="text-slate-900 dark:text-slate-100 text-xl font-bold tracking-tight">SahaBul</h2>
+</div>
+<div class="flex flex-1 justify-end gap-4 items-center">
+<div class="hidden md:flex gap-1 mr-4">
+<button id="dark-toggle" class="flex items-center justify-center rounded-xl h-10 w-10 bg-primary/10 text-primary hover:bg-primary hover:text-white transition-all">
+<span class="material-symbols-outlined">dark_mode</span>
+</button>
+</div>
+<div class="flex items-center gap-3 pl-4 border-l border-primary/10">
+<div class="text-right hidden sm:block">
+<p id="nav-user-name" class="text-sm font-bold leading-none">-</p>
+<p class="text-xs text-primary font-medium">Üye</p>
+</div>
+<button id="nav-logout-btn" class="flex items-center justify-center rounded-xl h-10 w-10 bg-primary/10 text-primary hover:bg-red-500 hover:text-white transition-all" title="Çıkış Yap">
+<span class="material-symbols-outlined text-sm">logout</span>
+</button>
+</div>
+</div>
+</header>
+<main class="flex-1 px-6 md:px-20 lg:px-40 py-8">
+<!-- Welcome Section -->
+<div class="flex flex-wrap justify-between items-end gap-6 mb-10">
+<div class="flex flex-col gap-2">
+<h1 id="welcome-title" class="text-slate-900 dark:text-slate-100 text-4xl font-black tracking-tight">Merhaba! 👋</h1>
+<p class="text-slate-600 dark:text-slate-400 text-lg font-normal">Bugün hangi sahada ter dökmek istersin?</p>
+</div>
+<button class="flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-xl font-bold hover:opacity-90 transition-all shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined">add_circle</span>
+                        Yeni Rezervasyon Yap
+                    </button>
+</div>
+<!-- Tabs Navigation -->
+<div class="mb-8 border-b border-primary/10">
+<div class="flex gap-8 overflow-x-auto no-scrollbar">
+<a id="tab-upcoming" data-tab="upcoming" class="flex flex-col items-center border-b-4 border-primary pb-3 transition-all cursor-pointer" href="#">
+<span class="text-slate-900 dark:text-slate-100 text-sm font-bold whitespace-nowrap">Yaklaşan Rezervasyonlar</span>
+</a>
+<a id="tab-past" data-tab="past" class="flex flex-col items-center border-b-4 border-transparent pb-3 text-slate-500 hover:text-primary transition-all cursor-pointer" href="#">
+<span class="text-sm font-bold whitespace-nowrap">Geçmiş Maçlar</span>
+</a>
+<a id="tab-favorites" data-tab="favorites" class="flex flex-col items-center border-b-4 border-transparent pb-3 text-slate-500 hover:text-primary transition-all cursor-pointer" href="#">
+<span class="text-sm font-bold whitespace-nowrap">Favori Sahalarım</span>
+</a>
+</div>
+</div>
+<!-- Dynamic Tab Content -->
+<div id="tab-content" class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+  <div class="col-span-2 text-center py-12 text-slate-400">
+    <span class="material-symbols-outlined text-4xl">sports_soccer</span>
+    <p class="mt-2">Yükleniyor...</p>
+  </div>
+</div>
+<!-- Activity Feed -->
+<div class="mt-12 bg-primary/5 rounded-2xl p-6 border border-primary/10">
+<h3 class="font-bold text-lg mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">analytics</span>
+                        Aylık İstatistiklerin
+                    </h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<div class="bg-white dark:bg-slate-800 p-4 rounded-xl flex items-center gap-4">
+<div class="size-12 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-xl">
+<span id="stat-matches">-</span>
+</div>
+<div>
+<p class="text-xs text-slate-500 uppercase tracking-widest font-bold">Maç Sayısı</p>
+<p class="text-slate-900 dark:text-slate-100 font-bold">Bu Ay Toplam</p>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-800 p-4 rounded-xl flex items-center gap-4">
+<div class="size-12 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">timer</span>
+</div>
+<div>
+<p class="text-xs text-slate-500 uppercase tracking-widest font-bold">Oyun Süresi</p>
+<p id="stat-hours" class="text-slate-900 dark:text-slate-100 font-bold">- Saat</p>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-800 p-4 rounded-xl flex items-center gap-4">
+<div class="size-12 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">local_fire_department</span>
+</div>
+<div>
+<p class="text-xs text-slate-500 uppercase tracking-widest font-bold">Kalori</p>
+<p id="stat-calories" class="text-slate-900 dark:text-slate-100 font-bold">- Kcal</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar (Mobile) -->
+<nav class="md:hidden fixed bottom-0 left-0 right-0 bg-white dark:bg-slate-900 border-t border-primary/10 px-6 py-3 flex justify-between items-center z-50">
+<button class="flex flex-col items-center gap-1 text-primary">
+<span class="material-symbols-outlined">home</span>
+<span class="text-[10px] font-bold">Ana Sayfa</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-400">
+<span class="material-symbols-outlined">search</span>
+<span class="text-[10px] font-bold">Ara</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-400">
+<span class="material-symbols-outlined">history</span>
+<span class="text-[10px] font-bold">Geçmiş</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-400">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] font-bold">Profil</span>
+</button>
+</nav>
+</div>
+</div>
+
+<script src="/frontend/shared/js/api.js"></script>
+<script src="/frontend/shared/js/auth.js"></script>
+<script src="/frontend/shared/js/router.js"></script>
+<script src="/frontend/shared/js/ui.js"></script>
+<script src="/kullan_c_paneli/main.js"></script>
+</body></html>
