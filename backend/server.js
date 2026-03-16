@@ -12,6 +12,11 @@ app.use(express.json());
 // Vercel'de bu satır çalışmaz ama statik dosyalar Vercel CDN'den serve edilir
 app.use(express.static(path.join(__dirname, '..')));
 
+// Ana sayfa yönlendirmesi
+app.get('/', (req, res) => {
+  res.redirect('/ana_sayfa/code.html');
+});
+
 // API Route'ları
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/fields', require('./routes/fields'));
