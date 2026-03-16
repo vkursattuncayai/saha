@@ -3,17 +3,21 @@
   "builds": [
     {
       "src": "backend/server.js",
-      "use": "@vercel/node"
+      "use": "@vercel/node",
+      "config": {
+        "includeFiles": [
+          "ana_sayfa/**",
+          "saha_listeleme/**",
+          "saha_detay/**",
+          "rezervasyon/**",
+          "kullan_c_paneli/**",
+          "admin_paneli/**",
+          "frontend/**"
+        ]
+      }
     }
   ],
   "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "/backend/server.js"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/$1"
-    }
+    { "src": "/(.*)", "dest": "/backend/server.js" }
   ]
 }
