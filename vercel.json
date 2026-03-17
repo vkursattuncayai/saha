@@ -12,6 +12,10 @@
           "rezervasyon/**",
           "kullan_c_paneli/**",
           "admin_paneli/**",
+          "sss/**",
+          "iletisim/**",
+          "kampanyalar/**",
+          "nasil_calisir/**",
           "frontend/**"
         ]
       }

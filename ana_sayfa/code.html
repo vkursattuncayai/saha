@@ -31,15 +31,15 @@
 <div class="relative flex min-h-screen flex-col overflow-x-hidden">
 <header class="sticky top-0 z-50 w-full border-b border-primary/10 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md">
 <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 md:px-8">
-<div class="flex items-center gap-2 text-primary">
+<a href="/ana_sayfa/code.html" class="flex items-center gap-2 text-primary hover:opacity-80 transition-opacity">
 <span class="material-symbols-outlined text-3xl font-bold">sports_soccer</span>
 <h1 class="text-2xl font-extrabold tracking-tight text-slate-900 dark:text-slate-100">SahaBul</h1>
-</div>
+</a>
 <nav class="hidden items-center gap-8 md:flex">
 <a class="text-sm font-semibold hover:text-primary transition-colors" href="/saha_listeleme/code.html">Saha Ara</a>
 <a id="nav-panel-link-2" class="text-sm font-semibold hover:text-primary transition-colors cursor-pointer" href="#">Rezervasyonlarım</a>
-<a class="text-sm font-semibold hover:text-primary transition-colors" href="#">Kampanyalar</a>
-<a class="text-sm font-semibold hover:text-primary transition-colors" href="#">Destek</a>
+<a class="text-sm font-semibold hover:text-primary transition-colors" href="/kampanyalar/code.html">Kampanyalar</a>
+<a class="text-sm font-semibold hover:text-primary transition-colors" href="/iletisim/code.html">Destek</a>
 </nav>
 <div class="flex items-center gap-4">
 <button id="dark-toggle" class="text-slate-500 hover:text-primary transition-colors hidden md:block">
@@ -78,9 +78,10 @@
                     </p>
 <div class="mx-auto mt-10 w-full max-w-5xl rounded-2xl bg-white p-4 shadow-2xl dark:bg-slate-900 md:rounded-full md:p-2">
 <div class="flex flex-col items-center gap-2 md:flex-row">
-<div class="flex w-full flex-1 items-center gap-3 px-4 py-2">
+<div class="relative flex w-full flex-1 items-center gap-3 px-4 py-2">
 <span class="material-symbols-outlined text-primary">location_on</span>
-<input id="hero-location" class="w-full border-none bg-transparent focus:ring-0 dark:placeholder-slate-400" placeholder="Şehir veya İlçe" type="text"/>
+<input id="hero-location" autocomplete="off" class="w-full border-none bg-transparent focus:ring-0 dark:placeholder-slate-400" placeholder="Şehir veya İlçe ara..." type="text"/>
+<div id="hero-suggestions" class="hidden absolute left-0 top-full mt-1 w-full z-50 bg-white dark:bg-slate-800 rounded-xl shadow-xl border border-primary/10 max-h-60 overflow-y-auto"></div>
 </div>
 <div class="h-8 w-px bg-slate-200 dark:bg-slate-700 hidden md:block"></div>
 <div class="flex w-full flex-1 items-center gap-3 px-4 py-2">
@@ -116,7 +117,7 @@
 <div id="popular-fields-grid" class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
 <div class="group overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition-all hover:shadow-xl dark:border-slate-800 dark:bg-slate-900">
 <div class="relative h-56 w-full overflow-hidden">
-<img alt="Football field" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Close up of a football field penalty spot" src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=800&q=80"/>
+<img alt="Football field" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://images.unsplash.com/photo-1543326727-cf6c39e8f84c?w=800&q=80"/>
 <div class="absolute right-3 top-3 rounded-full bg-white/90 px-3 py-1 text-xs font-bold text-slate-900 backdrop-blur">
                                 4.8 ★
                             </div>
@@ -139,7 +140,7 @@
 </div>
 <div class="group overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition-all hover:shadow-xl dark:border-slate-800 dark:bg-slate-900">
 <div class="relative h-56 w-full overflow-hidden">
-<img alt="Indoor football field" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Indoor synthetic turf football field" src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=800&q=80"/>
+<img alt="Indoor football field" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=800&q=80"/>
 <div class="absolute right-3 top-3 rounded-full bg-white/90 px-3 py-1 text-xs font-bold text-slate-900 backdrop-blur">
                                 4.9 ★
                             </div>
@@ -162,7 +163,7 @@
 </div>
 <div class="group overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition-all hover:shadow-xl dark:border-slate-800 dark:bg-slate-900">
 <div class="relative h-56 w-full overflow-hidden">
-<img alt="Football action" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Action shot of a football match on turf" src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=800&q=80"/>
+<img alt="Football action" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=800&q=80"/>
 <div class="absolute right-3 top-3 rounded-full bg-white/90 px-3 py-1 text-xs font-bold text-slate-900 backdrop-blur">
                                 4.7 ★
                             </div>
@@ -254,10 +255,10 @@
 <div>
 <h6 class="mb-6 font-bold uppercase tracking-wider text-slate-900 dark:text-slate-100">Kullanıcılar</h6>
 <ul class="space-y-4 text-sm text-slate-500">
-<li><a class="hover:text-primary" href="#">Nasıl Rezervasyon Yapılır?</a></li>
-<li><a class="hover:text-primary" href="#">Sıkça Sorulan Sorular</a></li>
-<li><a class="hover:text-primary" href="#">Mobil Uygulama</a></li>
-<li><a class="hover:text-primary" href="#">İptal Politikası</a></li>
+<li><a class="hover:text-primary" href="/nasil_calisir/code.html">Nasıl Rezervasyon Yapılır?</a></li>
+<li><a class="hover:text-primary" href="/sss/code.html">Sıkça Sorulan Sorular</a></li>
+<li><a class="hover:text-primary" href="/kampanyalar/code.html">Kampanyalar</a></li>
+<li><a class="hover:text-primary" href="/iletisim/code.html">İletişim & Destek</a></li>
 </ul>
 </div>
 <div>

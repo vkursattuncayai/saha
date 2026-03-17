@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script>
+  tailwind.config = {
+    darkMode: "class",
+    theme: { extend: { colors: { "primary": "#1db954", "background-light": "#f6f8f7", "background-dark": "#122017" }, fontFamily: { "display": ["Lexend"] }, borderRadius: { "DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px" } } }
+  }
+</script>
+<title>İletişim & Destek | SahaBul</title>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100">
+
+<!-- Nav -->
+<header class="sticky top-0 z-50 w-full border-b border-primary/10 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md">
+<div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 md:px-8">
+  <a href="/ana_sayfa/code.html" class="flex items-center gap-2 text-primary hover:opacity-80 transition-opacity">
+    <span class="material-symbols-outlined text-3xl font-bold">sports_soccer</span>
+    <span class="text-2xl font-extrabold tracking-tight text-slate-900 dark:text-slate-100">SahaBul</span>
+  </a>
+  <div class="flex items-center gap-4">
+    <a href="/sss/code.html" class="hidden md:block text-sm font-semibold hover:text-primary transition-colors">SSS</a>
+    <button id="dark-toggle" class="text-slate-500 hover:text-primary transition-colors">
+      <span class="material-symbols-outlined">dark_mode</span>
+    </button>
+    <a href="/ana_sayfa/code.html" class="text-sm text-slate-500 hover:text-primary transition-colors flex items-center gap-1">
+      <span class="material-symbols-outlined text-sm">arrow_back</span> Ana Sayfa
+    </a>
+  </div>
+</div>
+</header>
+
+<main class="mx-auto max-w-5xl px-4 py-16 md:px-8">
+  <div class="text-center mb-14">
+    <div class="inline-flex items-center justify-center w-16 h-16 bg-primary/10 rounded-2xl mb-4">
+      <span class="material-symbols-outlined text-primary text-3xl">support_agent</span>
+    </div>
+    <h1 class="text-4xl font-extrabold mb-3">İletişim & Destek</h1>
+    <p class="text-slate-500 text-lg max-w-xl mx-auto">Sorularınız için 7/24 hizmetinizdeyiz. İstediğin kanaldan bize ulaşabilirsin.</p>
+  </div>
+
+  <div class="grid md:grid-cols-3 gap-6 mb-14">
+    <div class="bg-white dark:bg-slate-800 rounded-2xl border border-primary/10 p-6 text-center shadow-sm hover:shadow-md transition-shadow">
+      <div class="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+        <span class="material-symbols-outlined text-primary text-2xl">mail</span>
+      </div>
+      <h3 class="font-bold mb-1">E-posta</h3>
+      <p class="text-sm text-slate-500 mb-3">Genellikle 24 saat içinde yanıt veririz.</p>
+      <a href="mailto:iletisim@sahabul.com" class="text-primary font-semibold text-sm hover:underline">iletisim@sahabul.com</a>
+    </div>
+    <div class="bg-white dark:bg-slate-800 rounded-2xl border border-primary/10 p-6 text-center shadow-sm hover:shadow-md transition-shadow">
+      <div class="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+        <span class="material-symbols-outlined text-primary text-2xl">phone</span>
+      </div>
+      <h3 class="font-bold mb-1">Telefon</h3>
+      <p class="text-sm text-slate-500 mb-3">Hafta içi 09:00 – 18:00 arası.</p>
+      <a href="tel:+908501234567" class="text-primary font-semibold text-sm hover:underline">0850 123 45 67</a>
+    </div>
+    <div class="bg-white dark:bg-slate-800 rounded-2xl border border-primary/10 p-6 text-center shadow-sm hover:shadow-md transition-shadow">
+      <div class="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+        <span class="material-symbols-outlined text-primary text-2xl">chat_bubble</span>
+      </div>
+      <h3 class="font-bold mb-1">Canlı Destek</h3>
+      <p class="text-sm text-slate-500 mb-3">Mesai saatlerinde anlık destek.</p>
+      <span class="inline-flex items-center gap-1 text-primary font-semibold text-sm">
+        <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span> Çevrimiçi
+      </span>
+    </div>
+  </div>
+
+  <!-- Contact Form -->
+  <div class="bg-white dark:bg-slate-800 rounded-3xl border border-primary/10 p-8 shadow-sm">
+    <h2 class="text-2xl font-bold mb-1">Mesaj Gönder</h2>
+    <p class="text-slate-500 text-sm mb-6">Formu doldur, ekibimiz kısa sürede dönüş yapsın.</p>
+    <form id="contact-form" class="grid md:grid-cols-2 gap-5">
+      <div>
+        <label class="block text-sm font-medium mb-1 text-slate-600 dark:text-slate-400">Adınız *</label>
+        <input type="text" id="contact-name" placeholder="Adınız Soyadınız" class="w-full rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary"/>
+      </div>
+      <div>
+        <label class="block text-sm font-medium mb-1 text-slate-600 dark:text-slate-400">E-posta *</label>
+        <input type="email" id="contact-email" placeholder="ornek@email.com" class="w-full rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary"/>
+      </div>
+      <div class="md:col-span-2">
+        <label class="block text-sm font-medium mb-1 text-slate-600 dark:text-slate-400">Konu</label>
+        <select id="contact-subject" class="w-full rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary">
+          <option value="">Konu Seçin</option>
+          <option>Rezervasyon Sorunu</option>
+          <option>Ödeme Sorunu</option>
+          <option>Tesis Kaydı</option>
+          <option>Hesap Sorunları</option>
+          <option>Diğer</option>
+        </select>
+      </div>
+      <div class="md:col-span-2">
+        <label class="block text-sm font-medium mb-1 text-slate-600 dark:text-slate-400">Mesajınız *</label>
+        <textarea id="contact-message" rows="5" placeholder="Sorununuzu veya isteğinizi detaylı olarak açıklayın..." class="w-full rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary resize-none"></textarea>
+      </div>
+      <div class="md:col-span-2">
+        <button type="submit" id="contact-submit" class="bg-primary text-white px-8 py-3 rounded-full font-bold hover:bg-primary/90 transition-all shadow-lg shadow-primary/20 flex items-center gap-2">
+          <span class="material-symbols-outlined text-sm">send</span> Mesaj Gönder
+        </button>
+      </div>
+    </form>
+    <div id="contact-success" class="hidden mt-4 text-center py-8">
+      <span class="material-symbols-outlined text-primary text-5xl" style="font-variation-settings:'FILL' 1">check_circle</span>
+      <p class="font-bold text-lg mt-3">Mesajınız alındı!</p>
+      <p class="text-slate-500 text-sm mt-1">En kısa sürede size dönüş yapacağız.</p>
+    </div>
+  </div>
+</main>
+
+<footer class="border-t border-slate-200 dark:border-slate-800 py-8 text-center text-sm text-slate-400 mt-12">
+  © 2024 SahaBul. Tüm Hakları Saklıdır.
+</footer>
+
+<script src="/frontend/shared/js/ui.js"></script>
+<script>
+  initDarkMode();
+  document.getElementById('contact-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    var name = document.getElementById('contact-name').value.trim();
+    var email = document.getElementById('contact-email').value.trim();
+    var msg = document.getElementById('contact-message').value.trim();
+    if (!name || !email || !msg) { alert('Lütfen zorunlu alanları doldurun.'); return; }
+    this.classList.add('hidden');
+    document.getElementById('contact-success').classList.remove('hidden');
+  });
+</script>
+</body>
+</html>

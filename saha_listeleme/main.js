@@ -17,6 +17,70 @@ var DISTRICT_MAP = {
   'Konya': ['Ahirli','Aksehir','Akoren','Altinekin','Beysehir','Bozkir','Cihanbeyli','Cumra','Derbent','Derebucak','Doganhisar','Emirgazi','Eregli','Guneysinir','Hadim','Huyuk','Ilgin','Kadinhani','Karapinar','Kulu','Meram','Sarayonu','Selcuklu','Seydisehir','Taskent','Tuzlukcu','Yalihuyuk','Yunak']
 };
 
+var ALL_CITIES_LS = ['Adana','Adıyaman','Afyonkarahisar','Ağrı','Aksaray','Amasya','Ankara','Antalya','Ardahan','Artvin','Aydın','Balıkesir','Bartın','Batman','Bayburt','Bilecik','Bingöl','Bitlis','Bolu','Burdur','Bursa','Çanakkale','Çankırı','Çorum','Denizli','Diyarbakır','Düzce','Edirne','Elazığ','Erzincan','Erzurum','Eskişehir','Gaziantep','Giresun','Gümüşhane','Hakkari','Hatay','Iğdır','Isparta','İstanbul','İzmir','Kahramanmaraş','Karabük','Karaman','Kars','Kastamonu','Kayseri','Kilis','Kırıkkale','Kırklareli','Kırşehir','Kocaeli','Konya','Kütahya','Malatya','Manisa','Mardin','Mersin','Muğla','Muş','Nevşehir','Niğde','Ordu','Osmaniye','Rize','Sakarya','Samsun','Şanlıurfa','Siirt','Sinop','Sivas','Şırnak','Tekirdağ','Tokat','Trabzon','Tunceli','Uşak','Van','Yalova','Yozgat','Zonguldak'];
+
+function normalizeTrLs(str) {
+  return (str || '').toLowerCase()
+    .replace(/ğ/g,'g').replace(/ü/g,'u').replace(/ş/g,'s')
+    .replace(/ı/g,'i').replace(/ö/g,'o').replace(/ç/g,'c')
+    .replace(/İ/g,'i').replace(/Ğ/g,'g').replace(/Ü/g,'u')
+    .replace(/Ş/g,'s').replace(/Ö/g,'o').replace(/Ç/g,'c');
+}
+
+function initNavSearch() {
+  var input = document.getElementById('nav-search-input');
+  var box = document.getElementById('nav-search-suggestions');
+  if (!input || !box) return;
+
+  input.addEventListener('input', function () {
+    var val = this.value.trim();
+    if (!val) { box.classList.add('hidden'); return; }
+    var norm = normalizeTrLs(val);
+    var matches = ALL_CITIES_LS.filter(function (c) { return normalizeTrLs(c).indexOf(norm) === 0; });
+    if (matches.length < 3) {
+      ALL_CITIES_LS.forEach(function (c) {
+        if (matches.indexOf(c) === -1 && normalizeTrLs(c).indexOf(norm) !== -1) matches.push(c);
+      });
+    }
+    matches = matches.slice(0, 6);
+    if (!matches.length) { box.classList.add('hidden'); return; }
+    box.innerHTML = matches.map(function (c) {
+      return '<button type="button" class="w-full text-left px-4 py-2 text-sm hover:bg-primary/10 hover:text-primary transition-colors flex items-center gap-2">' +
+        '<span class="material-symbols-outlined text-primary text-sm">location_on</span>' + c + '</button>';
+    }).join('');
+    box.classList.remove('hidden');
+    box.querySelectorAll('button').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var city = this.textContent.trim();
+        input.value = city;
+        box.classList.add('hidden');
+        var citySelect = document.getElementById('filter-city');
+        if (citySelect) {
+          citySelect.value = city;
+          updateDistricts(city);
+          debounceLoad();
+        }
+      });
+    });
+  });
+
+  input.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') {
+      box.classList.add('hidden');
+      var citySelect = document.getElementById('filter-city');
+      if (citySelect) {
+        citySelect.value = this.value.trim();
+        updateDistricts(this.value.trim());
+        debounceLoad();
+      }
+    }
+  });
+
+  document.addEventListener('click', function (e) {
+    if (!input.contains(e.target) && !box.contains(e.target)) box.classList.add('hidden');
+  });
+}
+
 document.addEventListener('DOMContentLoaded', async function () {
   loadAuthModal();
   initDarkMode();
@@ -25,6 +89,7 @@ document.addEventListener('DOMContentLoaded', async function () {
   initFilterToggle();
   prefillFiltersFromUrl();
   bindFilterEvents();
+  initNavSearch();
   loadFields();
 });
 

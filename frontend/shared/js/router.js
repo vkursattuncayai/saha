@@ -6,7 +6,11 @@
     'saha_detay': '/saha_detay/code.html',
     'rezervasyon': '/rezervasyon/code.html',
     'kullan_c_paneli': '/kullan_c_paneli/code.html',
-    'admin_paneli': '/admin_paneli/code.html'
+    'admin_paneli': '/admin_paneli/code.html',
+    'sss': '/sss/code.html',
+    'iletisim': '/iletisim/code.html',
+    'kampanyalar': '/kampanyalar/code.html',
+    'nasil_calisir': '/nasil_calisir/code.html'
   };
 
   window.Router = {

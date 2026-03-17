@@ -213,7 +213,16 @@
           }
           var redirect = sessionStorage.getItem('sahabul_redirect');
           sessionStorage.removeItem('sahabul_redirect');
-          window.location.reload();
+          if (redirect) {
+            window.location.href = redirect;
+          } else {
+            var p = window.location.pathname;
+            if (p === '/' || p.indexOf('ana_sayfa') !== -1) {
+              window.location.href = '/kullan_c_paneli/code.html';
+            } else {
+              window.location.reload();
+            }
+          }
         } catch (err) {
           showToast(err.message, 'error');
           submitBtn.disabled = false;

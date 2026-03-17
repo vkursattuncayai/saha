@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script>
+  tailwind.config = {
+    darkMode: "class",
+    theme: { extend: { colors: { "primary": "#1db954", "background-light": "#f6f8f7", "background-dark": "#122017" }, fontFamily: { "display": ["Lexend"] }, borderRadius: { "DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px" } } }
+  }
+</script>
+<title>Sıkça Sorulan Sorular | SahaBul</title>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100">
+
+<!-- Nav -->
+<header class="sticky top-0 z-50 w-full border-b border-primary/10 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md">
+<div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 md:px-8">
+  <a href="/ana_sayfa/code.html" class="flex items-center gap-2 text-primary hover:opacity-80 transition-opacity">
+    <span class="material-symbols-outlined text-3xl font-bold">sports_soccer</span>
+    <span class="text-2xl font-extrabold tracking-tight text-slate-900 dark:text-slate-100">SahaBul</span>
+  </a>
+  <div class="flex items-center gap-4">
+    <a href="/saha_listeleme/code.html" class="hidden md:block text-sm font-semibold hover:text-primary transition-colors">Saha Ara</a>
+    <button id="dark-toggle" class="text-slate-500 hover:text-primary transition-colors">
+      <span class="material-symbols-outlined">dark_mode</span>
+    </button>
+    <a href="/ana_sayfa/code.html" class="text-sm text-slate-500 hover:text-primary transition-colors flex items-center gap-1">
+      <span class="material-symbols-outlined text-sm">arrow_back</span> Ana Sayfa
+    </a>
+  </div>
+</div>
+</header>
+
+<main class="mx-auto max-w-3xl px-4 py-16 md:px-8">
+  <!-- Hero -->
+  <div class="text-center mb-14">
+    <div class="inline-flex items-center justify-center w-16 h-16 bg-primary/10 rounded-2xl mb-4">
+      <span class="material-symbols-outlined text-primary text-3xl">help</span>
+    </div>
+    <h1 class="text-4xl font-extrabold mb-3">Sıkça Sorulan Sorular</h1>
+    <p class="text-slate-500 text-lg">Aklına takılan soruların cevaplarını burada bulabilirsin.</p>
+  </div>
+
+  <!-- FAQ Accordion -->
+  <div class="space-y-3" id="faq-list">
+
+    <div class="faq-item bg-white dark:bg-slate-800 rounded-2xl border border-primary/10 overflow-hidden">
+      <button class="faq-btn w-full flex items-center justify-between px-6 py-4 text-left font-semibold hover:text-primary transition-colors" onclick="toggleFaq(this)">
+        <span>Rezervasyon nasıl yapılır?</span>
+        <span class="material-symbols-outlined transition-transform">expand_more</span>
+      </button>
+      <div class="faq-body hidden px-6 pb-5 text-slate-500 text-sm leading-relaxed">
+        Ana sayfadaki arama kutusuna şehir veya ilçe yaz, tarih ve saat seç, ardından "Saha Bul" butonuna bas. Listelenen sahalardan birini seçip uygun zaman dilimini tıkla. Ödeme adımını tamamladıktan sonra rezervasyonun onaylanır.
+      </div>
+    </div>
+
+    <div class="faq-item bg-white dark:bg-slate-800 rounded-2xl border border-primary/10 overflow-hidden">
+      <button class="faq-btn w-full flex items-center justify-between px-6 py-4 text-left font-semibold hover:text-primary transition-colors" onclick="toggleFaq(this)">
+        <span>Rezervasyonu iptal edebilir miyim?</span>
+        <span class="material-symbols-outlined transition-transform">expand_more</span>
+      </button>
+      <div class="faq-body hidden px-6 pb-5 text-slate-500 text-sm leading-relaxed">
+        Evet. Kullanıcı Paneli'ne girerek "Yaklaşan Rezervasyonlar" sekmesinde ilgili rezervasyonun yanındaki "İptal Et" butonuna tıklayabilirsin. Maç saatinden 24 saat öncesine kadar yapılan iptallerde ücret iadesi sağlanır.
+      </div>
+    </div>
+
+    <div class="faq-item bg-white dark:bg-slate-800 rounded-2xl border border-primary/10 overflow-hidden">
+      <button class="faq-btn w-full flex items-center justify-between px-6 py-4 text-left font-semibold hover:text-primary transition-colors" onclick="toggleFaq(this)">
+        <span>Ödeme güvenli mi?</span>
+        <span class="material-symbols-outlined transition-transform">expand_more</span>
+      </button>
+      <div class="faq-body hidden px-6 pb-5 text-slate-500 text-sm leading-relaxed">
+        Tüm ödemeler SSL sertifikası ile şifrelenerek işlenir. Kart bilgilerin asla sunucularımızda saklanmaz. Mastercard, Visa ve Troy kartlarıyla güvenle ödeme yapabilirsin.
+      </div>
+    </div>
+
+    <div class="faq-item bg-white dark:bg-slate-800 rounded-2xl border border-primary/10 overflow-hidden">
+      <button class="faq-btn w-full flex items-center justify-between px-6 py-4 text-left font-semibold hover:text-primary transition-colors" onclick="toggleFaq(this)">
+        <span>Hangi şehirlerde hizmet veriyorsunuz?</span>
+        <span class="material-symbols-outlined transition-transform">expand_more</span>
+      </button>
+      <div class="faq-body hidden px-6 pb-5 text-slate-500 text-sm leading-relaxed">
+        Şu an İstanbul, Ankara, İzmir, Bursa, Antalya, Çorum ve Kayseri'de aktif sahalar bulunmaktadır. Her ay yeni şehirler ve sahalar sisteme eklenmektedir.
+      </div>
+    </div>
+
+    <div class="faq-item bg-white dark:bg-slate-800 rounded-2xl border border-primary/10 overflow-hidden">
+      <button class="faq-btn w-full flex items-center justify-between px-6 py-4 text-left font-semibold hover:text-primary transition-colors" onclick="toggleFaq(this)">
+        <span>Tesisimi sisteme nasıl eklerim?</span>
+        <span class="material-symbols-outlined transition-transform">expand_more</span>
+      </button>
+      <div class="faq-body hidden px-6 pb-5 text-slate-500 text-sm leading-relaxed">
+        iletisim@sahabul.com adresine tesis adı, şehir, kapasite ve iletişim bilgilerini içeren bir e-posta gönder. Ekibimiz 1-2 iş günü içinde seninle iletişime geçer.
+      </div>
+    </div>
+
+    <div class="faq-item bg-white dark:bg-slate-800 rounded-2xl border border-primary/10 overflow-hidden">
+      <button class="faq-btn w-full flex items-center justify-between px-6 py-4 text-left font-semibold hover:text-primary transition-colors" onclick="toggleFaq(this)">
+        <span>Aynı sahayı iki kez rezerve etmek mümkün mü?</span>
+        <span class="material-symbols-outlined transition-transform">expand_more</span>
+      </button>
+      <div class="faq-body hidden px-6 pb-5 text-slate-500 text-sm leading-relaxed">
+        Evet, farklı tarihler için aynı sahadan birden fazla rezervasyon yapabilirsin. Aynı tarih ve saate ikinci bir rezervasyon yapılamaz; sistem bunu otomatik engeller.
+      </div>
+    </div>
+
+    <div class="faq-item bg-white dark:bg-slate-800 rounded-2xl border border-primary/10 overflow-hidden">
+      <button class="faq-btn w-full flex items-center justify-between px-6 py-4 text-left font-semibold hover:text-primary transition-colors" onclick="toggleFaq(this)">
+        <span>Hesabımı nasıl silerim?</span>
+        <span class="material-symbols-outlined transition-transform">expand_more</span>
+      </button>
+      <div class="faq-body hidden px-6 pb-5 text-slate-500 text-sm leading-relaxed">
+        Hesap silme talebini iletisim@sahabul.com adresine e-posta göndererek iletebilirsin. Talebin 7 iş günü içinde işleme alınır.
+      </div>
+    </div>
+
+  </div>
+
+  <!-- CTA -->
+  <div class="mt-14 text-center bg-primary/5 rounded-3xl p-10 border border-primary/10">
+    <p class="font-bold text-xl mb-2">Sorun hâlâ çözülmedi mi?</p>
+    <p class="text-slate-500 mb-6">Destek ekibimize ulaş, en kısa sürede yardımcı olalım.</p>
+    <a href="/iletisim/code.html" class="inline-flex items-center gap-2 bg-primary text-white px-8 py-3 rounded-full font-bold hover:bg-primary/90 transition-all shadow-lg shadow-primary/20">
+      <span class="material-symbols-outlined text-sm">support_agent</span> Bize Ulaş
+    </a>
+  </div>
+</main>
+
+<footer class="border-t border-slate-200 dark:border-slate-800 py-8 text-center text-sm text-slate-400 mt-12">
+  © 2024 SahaBul. Tüm Hakları Saklıdır.
+</footer>
+
+<script src="/frontend/shared/js/ui.js"></script>
+<script>
+  initDarkMode();
+  function toggleFaq(btn) {
+    var body = btn.nextElementSibling;
+    var icon = btn.querySelector('.material-symbols-outlined');
+    var isOpen = !body.classList.contains('hidden');
+    // close all
+    document.querySelectorAll('.faq-body').forEach(function(b) { b.classList.add('hidden'); });
+    document.querySelectorAll('.faq-btn .material-symbols-outlined').forEach(function(i) { i.style.transform = ''; });
+    if (!isOpen) {
+      body.classList.remove('hidden');
+      icon.style.transform = 'rotate(180deg)';
+    }
+  }
+</script>
+</body>
+</html>
