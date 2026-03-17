@@ -3,16 +3,47 @@
 var currentPage = 1;
 var currentRating = 0;
 var debounceTimer = null;
-var DEFAULT_IMAGE = 'https://lh3.googleusercontent.com/aida-public/AB6AXuBWaDjz7xB2txRyfjhcw40KwVC3IfjRxehCmLFLHxBn4aP3jjcScvC2BCDGKL6UZ3FDqWmpiwgeq3SGoOFtdDScCvdlmz7gqyOLLJk4_FxLQv3MY6dsw2cWqppGzcfS82lQPAJhrGOQ2deQa00I6vSx5yPgaGzZayYTH4tgJqB3t-89lsZBH5avvhh12cLZxmPm9RMIZGEJsfmOpVbjfLUSMlyFavg8PaUmjN9Wxaucz3-Z815TlxSlwYyNtPEHVVop9ist0gUfc7U';
+var DEFAULT_IMAGE = 'https://images.unsplash.com/photo-1529900748604-07564a03e7a6?w=800';
+
+var DISTRICT_MAP = {
+  'Istanbul': ['Adalar','Arnavutkoy','Atasehir','Avcilar','Bagcilar','Bahcelievler','Bakirkoy','Basaksehir','Bayrampasa','Besiktas','Beykoz','Beylikduzu','Beyoglu','Buyukcekmece','Catalca','Cekmekoy','Esenler','Esenyurt','Eyupsultan','Fatih','Gaziosmanpasa','Gungoren','Kadikoy','Kagithane','Kartal','Kucukcekmece','Maltepe','Pendik','Sancaktepe','Sariyer','Sile','Silivri','Sisli','Sultanbeyli','Sultangazi','Tuzla','Umraniye','Uskudar','Zeytinburnu'],
+  'Ankara': ['Akyurt','Altindag','Ayash','Bala','Beypazari','Camlidere','Cankaya','Cubuk','Elmadagi','Etimesgut','Evren','Golbasi','Gudul','Haymana','Kalecik','Kazan','Kecioren','Kizilcahamam','Mamak','Nallihan','Polatli','Pursaklar','Sincan','Sereflikochisar','Yenimahalle'],
+  'Izmir': ['Aliaga','Balcova','Bayindir','Bayrakli','Bergama','Beydag','Bornova','Buca','Cesme','Cigli','Dikili','Foca','Gaziemir','Guzelbahce','Karabaglar','Karaburun','Karsiyaka','Kemalpasa','Kinik','Kiraz','Kucukdere','Menderes','Menemen','Mordogan','Narlidere','Odemis','Seferihisar','Selcuk','Tire','Torbali','Urla'],
+  'Bursa': ['Buyukorhan','Gemlik','Gursu','Harmancik','Inegol','Iznik','Karacabey','Keles','Kestel','Mudanya','Mustafakemalpasa','Nilufer','Orhaneli','Orhangazi','Osmangazi','Yenisehir','Yildirim'],
+  'Antalya': ['Akseki','Aksu','Alanya','Demre','Dosemealti','Elmalı','Finike','Gazipaşa','Gundogmus','Ibradı','Kas','Kemer','Kepez','Konyaalti','Korkuteli','Kumluca','Manavgat','Muratpasa','Serik'],
+  'Corum': ['Alaca','Alaca','Bogazkale','Dodurga','Iskilip','Kargi','Lacin','Mecitaziz','Merkez','Oguzlar','Ortakoy','Osmancik','Sungurlu','Ugurludag'],
+  'Kayseri': ['Akkisla','Bünyan','Develi','Felahiye','Hacilar','Incesu','Kocasinan','Melikgazi','Ozvatan','Pinarbashy','Sarioglan','Sariz','Talas','Tomarza','Yahyali','Yesilhisar'],
+  'Gaziantep': ['Araban','Islahiye','Karkamis','Nizip','Nurdagi','Oguzeli','Sahinbey','Sehitkamil','Yavuzeli'],
+  'Konya': ['Ahirli','Aksehir','Akoren','Altinekin','Beysehir','Bozkir','Cihanbeyli','Cumra','Derbent','Derebucak','Doganhisar','Emirgazi','Eregli','Guneysinir','Hadim','Huyuk','Ilgin','Kadinhani','Karapinar','Kulu','Meram','Sarayonu','Selcuklu','Seydisehir','Taskent','Tuzlukcu','Yalihuyuk','Yunak']
+};
 
 document.addEventListener('DOMContentLoaded', async function () {
   loadAuthModal();
   initDarkMode();
   updateNavForAuthState();
+  initMobileMenu();
+  initFilterToggle();
   prefillFiltersFromUrl();
   bindFilterEvents();
   loadFields();
 });
+
+function initFilterToggle() {
+  var toggleBtn = document.getElementById('filter-toggle-btn');
+  var sidebar = document.getElementById('filter-sidebar');
+  if (!toggleBtn || !sidebar) return;
+
+  // Mobilde başlangıçta gizli
+  if (window.innerWidth < 1024) {
+    sidebar.classList.add('hidden');
+  }
+
+  toggleBtn.addEventListener('click', function () {
+    sidebar.classList.toggle('hidden');
+    var icon = toggleBtn.querySelector('.material-symbols-outlined');
+    if (icon) icon.textContent = sidebar.classList.contains('hidden') ? 'tune' : 'close';
+  });
+}
 
 function prefillFiltersFromUrl() {
   var city = Router.getParam('city');
@@ -20,7 +51,10 @@ function prefillFiltersFromUrl() {
 
   if (city) {
     var citySelect = document.getElementById('filter-city');
-    if (citySelect) citySelect.value = city;
+    if (citySelect) {
+      citySelect.value = city;
+      updateDistricts(city);
+    }
   }
   if (district) {
     var districtSelect = document.getElementById('filter-district');
@@ -28,8 +62,29 @@ function prefillFiltersFromUrl() {
   }
 }
 
+function updateDistricts(city) {
+  var districtSelect = document.getElementById('filter-district');
+  if (!districtSelect) return;
+  districtSelect.innerHTML = '<option value="">Tüm İlçeler</option>';
+  var districts = DISTRICT_MAP[city] || [];
+  districts.forEach(function (d) {
+    var opt = document.createElement('option');
+    opt.value = d;
+    opt.textContent = d;
+    districtSelect.appendChild(opt);
+  });
+}
+
 function bindFilterEvents() {
-  ['filter-city', 'filter-district', 'sort-select'].forEach(function (id) {
+  var cityEl = document.getElementById('filter-city');
+  if (cityEl) {
+    cityEl.addEventListener('change', function () {
+      updateDistricts(this.value);
+      debounceLoad();
+    });
+  }
+
+  ['filter-district', 'sort-select'].forEach(function (id) {
     var el = document.getElementById(id);
     if (el) el.addEventListener('change', debounceLoad);
   });

@@ -5,6 +5,7 @@ var allReservations = [];
 
 document.addEventListener('DOMContentLoaded', async function () {
   initDarkMode();
+  initMobileMenu();
 
   // Auth + admin guard
   if (!Auth.isLoggedIn()) {

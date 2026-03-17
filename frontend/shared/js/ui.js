@@ -101,14 +101,14 @@
     }
 
     if (panelLink) {
-      panelLink.addEventListener('click', function (e) {
-        e.preventDefault();
-        if (!Auth.isLoggedIn()) {
-          openAuthModal('login');
-        } else {
-          Router.navigate('kullan_c_paneli');
-        }
-      });
+      var user = Auth.getUser();
+      if (user && user.is_admin) {
+        panelLink.textContent = 'Admin Panel';
+        panelLink.onclick = function(e) { e.preventDefault(); Router.navigate('admin_paneli'); };
+      } else {
+        panelLink.textContent = 'Kullanıcı Paneli';
+        panelLink.onclick = function(e) { e.preventDefault(); Router.navigate('kullan_c_paneli'); };
+      }
     }
 
     if (loginBtn) {
@@ -207,13 +207,13 @@
           closeAuthModal();
           showToast('Hoş geldiniz, ' + data.user.name.split(' ')[0] + '!');
 
-          var redirect = sessionStorage.getItem('sahabul_redirect');
-          if (redirect) {
-            sessionStorage.removeItem('sahabul_redirect');
-            window.location.href = redirect;
-          } else {
-            updateNavForAuthState();
+          if (data.user.is_admin) {
+            window.location.href = '/admin_paneli/code.html';
+            return;
           }
+          var redirect = sessionStorage.getItem('sahabul_redirect');
+          sessionStorage.removeItem('sahabul_redirect');
+          window.location.reload();
         } catch (err) {
           showToast(err.message, 'error');
           submitBtn.disabled = false;
@@ -290,6 +290,31 @@
     if (half) html += '<span class="material-symbols-outlined text-yellow-400 text-sm" style="font-variation-settings:\'FILL\' 1">star_half</span>';
     for (var j = 0; j < empty; j++) html += '<span class="material-symbols-outlined text-slate-300 text-sm">star</span>';
     return html;
+  };
+
+  // ─── MOBİL MENÜ ─────────────────────────────────────────────────────────────
+  window.initMobileMenu = function () {
+    var btn = document.getElementById('mobile-menu-btn');
+    var menu = document.getElementById('mobile-menu');
+    var closeBtn = document.getElementById('mobile-menu-close');
+    if (!btn || !menu) return;
+
+    btn.addEventListener('click', function () {
+      menu.classList.remove('hidden');
+      menu.classList.add('flex');
+    });
+    if (closeBtn) {
+      closeBtn.addEventListener('click', function () {
+        menu.classList.add('hidden');
+        menu.classList.remove('flex');
+      });
+    }
+    menu.addEventListener('click', function (e) {
+      if (e.target === menu) {
+        menu.classList.add('hidden');
+        menu.classList.remove('flex');
+      }
+    });
   };
 
 })();

@@ -65,13 +65,21 @@
   </button>
   <button id="nav-logout-btn" class="text-xs text-slate-500 hover:text-red-500 transition-colors">Çıkış</button>
 </div>
+<!-- Hamburger (mobile only) -->
+<button id="mobile-menu-btn" class="md:hidden flex items-center justify-center w-10 h-10 rounded-xl hover:bg-primary/10 transition-colors text-slate-700 dark:text-slate-200">
+  <span class="material-symbols-outlined">menu</span>
+</button>
 </div>
 </div>
 </header>
 <main class="mx-auto w-full max-w-7xl flex-1 px-4 py-8 md:px-10">
 <div class="flex flex-col lg:flex-row gap-8">
 <!-- Sidebar Filters -->
-<aside class="w-full lg:w-72 shrink-0 space-y-6">
+<button id="filter-toggle-btn" class="lg:hidden flex items-center gap-2 px-4 py-2 rounded-xl bg-primary text-white text-sm font-bold mb-4">
+  <span class="material-symbols-outlined text-base">tune</span>
+  Filtreler
+</button>
+<aside id="filter-sidebar" class="w-full lg:w-72 shrink-0 space-y-6 lg:!block">
 <div class="rounded-xl border border-primary/10 bg-white dark:bg-slate-900 p-6 shadow-sm">
 <div class="flex items-center justify-between mb-4">
 <h2 class="text-lg font-bold">Filtrele</h2>
@@ -85,25 +93,93 @@
 <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-primary text-sm">location_on</span>
 <select id="filter-city" class="w-full rounded-lg border-none bg-primary/5 pl-9 pr-4 py-2.5 text-sm focus:ring-2 focus:ring-primary">
 <option value="">Tüm Şehirler</option>
-<option value="İstanbul">İstanbul</option>
+<option value="Adana">Adana</option>
+<option value="Adıyaman">Adıyaman</option>
+<option value="Afyonkarahisar">Afyonkarahisar</option>
+<option value="Ağrı">Ağrı</option>
+<option value="Aksaray">Aksaray</option>
+<option value="Amasya">Amasya</option>
 <option value="Ankara">Ankara</option>
+<option value="Antalya">Antalya</option>
+<option value="Ardahan">Ardahan</option>
+<option value="Artvin">Artvin</option>
+<option value="Aydın">Aydın</option>
+<option value="Balıkesir">Balıkesir</option>
+<option value="Bartın">Bartın</option>
+<option value="Batman">Batman</option>
+<option value="Bayburt">Bayburt</option>
+<option value="Bilecik">Bilecik</option>
+<option value="Bingöl">Bingöl</option>
+<option value="Bitlis">Bitlis</option>
+<option value="Bolu">Bolu</option>
+<option value="Burdur">Burdur</option>
+<option value="Bursa">Bursa</option>
+<option value="Çanakkale">Çanakkale</option>
+<option value="Çankırı">Çankırı</option>
+<option value="Çorum">Çorum</option>
+<option value="Denizli">Denizli</option>
+<option value="Diyarbakır">Diyarbakır</option>
+<option value="Düzce">Düzce</option>
+<option value="Edirne">Edirne</option>
+<option value="Elazığ">Elazığ</option>
+<option value="Erzincan">Erzincan</option>
+<option value="Erzurum">Erzurum</option>
+<option value="Eskişehir">Eskişehir</option>
+<option value="Gaziantep">Gaziantep</option>
+<option value="Giresun">Giresun</option>
+<option value="Gümüşhane">Gümüşhane</option>
+<option value="Hakkari">Hakkari</option>
+<option value="Hatay">Hatay</option>
+<option value="Iğdır">Iğdır</option>
+<option value="Isparta">Isparta</option>
+<option value="İstanbul">İstanbul</option>
 <option value="İzmir">İzmir</option>
+<option value="Kahramanmaraş">Kahramanmaraş</option>
+<option value="Karabük">Karabük</option>
+<option value="Karaman">Karaman</option>
+<option value="Kars">Kars</option>
+<option value="Kastamonu">Kastamonu</option>
+<option value="Kayseri">Kayseri</option>
+<option value="Kilis">Kilis</option>
+<option value="Kırıkkale">Kırıkkale</option>
+<option value="Kırklareli">Kırklareli</option>
+<option value="Kırşehir">Kırşehir</option>
+<option value="Kocaeli">Kocaeli</option>
+<option value="Konya">Konya</option>
+<option value="Kütahya">Kütahya</option>
+<option value="Malatya">Malatya</option>
+<option value="Manisa">Manisa</option>
+<option value="Mardin">Mardin</option>
+<option value="Mersin">Mersin</option>
+<option value="Muğla">Muğla</option>
+<option value="Muş">Muş</option>
+<option value="Nevşehir">Nevşehir</option>
+<option value="Niğde">Niğde</option>
+<option value="Ordu">Ordu</option>
+<option value="Osmaniye">Osmaniye</option>
+<option value="Rize">Rize</option>
+<option value="Sakarya">Sakarya</option>
+<option value="Samsun">Samsun</option>
+<option value="Siirt">Siirt</option>
+<option value="Sinop">Sinop</option>
+<option value="Sivas">Sivas</option>
+<option value="Şanlıurfa">Şanlıurfa</option>
+<option value="Şırnak">Şırnak</option>
+<option value="Tekirdağ">Tekirdağ</option>
+<option value="Tokat">Tokat</option>
+<option value="Trabzon">Trabzon</option>
+<option value="Tunceli">Tunceli</option>
+<option value="Uşak">Uşak</option>
+<option value="Van">Van</option>
+<option value="Yalova">Yalova</option>
+<option value="Yozgat">Yozgat</option>
+<option value="Zonguldak">Zonguldak</option>
 </select>
 </div>
 <div class="relative">
 <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-primary text-sm">map</span>
 <select id="filter-district" class="w-full rounded-lg border-none bg-primary/5 pl-9 pr-4 py-2.5 text-sm focus:ring-2 focus:ring-primary">
 <option value="">Tüm İlçeler</option>
-<option value="Kadıköy">Kadıköy</option>
-<option value="Beşiktaş">Beşiktaş</option>
-<option value="Şişli">Şişli</option>
-<option value="Üsküdar">Üsküdar</option>
-<option value="Maltepe">Maltepe</option>
-<option value="Kartal">Kartal</option>
-<option value="Beylikdüzü">Beylikdüzü</option>
-<option value="Bakırköy">Bakırköy</option>
-<option value="Fatih">Fatih</option>
-<option value="Ümraniye">Ümraniye</option>
 </select>
 </div>
 </div>
@@ -236,4 +312,28 @@
 <script src="/frontend/shared/js/router.js"></script>
 <script src="/frontend/shared/js/ui.js"></script>
 <script src="/saha_listeleme/main.js"></script>
+<!-- Mobile Menu Overlay -->
+<div id="mobile-menu" class="hidden fixed inset-0 z-50 bg-black/60 backdrop-blur-sm md:hidden">
+  <div class="bg-white dark:bg-slate-900 w-72 h-full shadow-2xl flex flex-col p-6 gap-2">
+    <div class="flex items-center justify-between mb-6">
+      <span class="text-xl font-extrabold text-primary">SahaBul</span>
+      <button id="mobile-menu-close" class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-primary/10">
+        <span class="material-symbols-outlined text-slate-500">close</span>
+      </button>
+    </div>
+    <a href="/ana_sayfa/code.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-primary/10 text-slate-700 dark:text-slate-200 font-medium">
+      <span class="material-symbols-outlined text-primary">home</span> Ana Sayfa
+    </a>
+    <a href="/saha_listeleme/code.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl bg-primary/10 text-primary font-bold">
+      <span class="material-symbols-outlined text-primary">search</span> Saha Bul
+    </a>
+    <a href="/kullan_c_paneli/code.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-primary/10 text-slate-700 dark:text-slate-200 font-medium">
+      <span class="material-symbols-outlined text-primary">person</span> Panelim
+    </a>
+    <div class="mt-auto pt-4 border-t border-slate-100 dark:border-slate-800 flex flex-col gap-2">
+      <button onclick="openAuthModal('login')" class="w-full py-2.5 rounded-xl border border-primary text-primary font-bold text-sm hover:bg-primary/10 transition-colors">Giriş Yap</button>
+      <button onclick="openAuthModal('register')" class="w-full py-2.5 rounded-xl bg-primary text-white font-bold text-sm hover:bg-primary/90 transition-colors">Üye Ol</button>
+    </div>
+  </div>
+</div>
 </body></html>

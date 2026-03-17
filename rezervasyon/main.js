@@ -5,6 +5,7 @@ var pending = null;
 document.addEventListener('DOMContentLoaded', function () {
   initDarkMode();
   updateNavForAuthState();
+  initMobileMenu();
 
   // Auth guard
   if (!Auth.isLoggedIn()) {

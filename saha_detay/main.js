@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', async function () {
   loadAuthModal();
   initDarkMode();
   updateNavForAuthState();
+  initMobileMenu();
 
   fieldId = Router.getParam('id');
   if (!fieldId) {

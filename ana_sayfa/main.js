@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 
   // Nav durumunu güncelle
   updateNavForAuthState();
+  initMobileMenu();
 
   // Bugünün tarihini varsayılan olarak ayarla
   var dateInput = document.getElementById('hero-date');

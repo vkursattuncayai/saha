@@ -1,10 +1,11 @@
 // Kullanıcı Paneli JavaScript
 
 var currentTab = 'upcoming';
-var DEFAULT_IMAGE = 'https://lh3.googleusercontent.com/aida-public/AB6AXuBWaDjz7xB2txRyfjhcw40KwVC3IfjRxehCmLFLHxBn4aP3jjcScvC2BCDGKL6UZ3FDqWmpiwgeq3SGoOFtdDScCvdlmz7gqyOLLJk4_FxLQv3MY6dsw2cWqppGzcfS82lQPAJhrGOQ2deQa00I6vSx5yPgaGzZayYTH4tgJqB3t-89lsZBH5avvhh12cLZxmPm9RMIZGEJsfmOpVbjfLUSMlyFavg8PaUmjN9Wxaucz3-Z815TlxSlwYyNtPEHVVop9ist0gUfc7U';
+var DEFAULT_IMAGE = 'https://images.unsplash.com/photo-1529900748604-07564a03e7a6?w=800&q=80';
 
 document.addEventListener('DOMContentLoaded', async function () {
   initDarkMode();
+  initMobileMenu();
 
   // Auth guard
   if (!Auth.isLoggedIn()) {

@@ -194,6 +194,77 @@ async function seedFields() {
       description: 'Doga icinde, huzurlu bir ortamda futbol oynаyin.',
       amenities: ['Otopark', 'Dus', 'Soyunma Odasi'],
       images: ['https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800']
+    },
+    // --- Corum ---
+    {
+      name: 'Corum Merkez Hali Saha',
+      city: 'Corum',
+      district: 'Merkez',
+      address: 'Gazi Caddesi No:14, Merkez',
+      price_per_hour: 180,
+      rating: 4.3,
+      reviews_count: 28,
+      field_type: 'Kapali Saha',
+      capacity: '5+5',
+      description: 'Merkeze yakin, kapali ve aydinlatmali hali saha. Soyunma odasi ve dus imkani mevcuttur.',
+      amenities: ['Otopark', 'Dus', 'Soyunma Odasi', 'Kafe'],
+      images: ['https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?w=800']
+    },
+    {
+      name: 'Yildiz Spor Hali Saha',
+      city: 'Corum',
+      district: 'Merkez',
+      address: 'Inonu Mah. Spor Sk. No:3, Merkez',
+      price_per_hour: 160,
+      rating: 4.1,
+      reviews_count: 17,
+      field_type: 'Acik Saha',
+      capacity: '7+7',
+      description: 'Genis acik hali saha, aile dostu ortam.',
+      amenities: ['Otopark', 'Soyunma Odasi'],
+      images: ['https://images.unsplash.com/photo-1529900748604-07564a03e7a6?w=800']
+    },
+    {
+      name: 'Osmancik Futbol Park',
+      city: 'Corum',
+      district: 'Osmancik',
+      address: 'Kizilirmak Mah. Park Sk. No:7, Osmancik',
+      price_per_hour: 150,
+      rating: 4.4,
+      reviews_count: 22,
+      field_type: 'Acik Saha',
+      capacity: '7+7',
+      description: 'Kizilirmak nehri kenarinda ferah, dogal cim futbol sahasi.',
+      amenities: ['Otopark', 'Dus', 'Kafe'],
+      images: ['https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=800']
+    },
+    {
+      name: 'Alaca Genclik Hali Saha',
+      city: 'Corum',
+      district: 'Alaca',
+      address: 'Cumhuriyet Mah. No:2, Alaca',
+      price_per_hour: 140,
+      rating: 4.0,
+      reviews_count: 11,
+      field_type: 'Kapali Saha',
+      capacity: '5+5',
+      description: 'Ilcenin tek kapali hali sahasi, temiz ve bakimli.',
+      amenities: ['Soyunma Odasi', 'Otopark'],
+      images: ['https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=800']
+    },
+    {
+      name: 'Corum Premium Futbol Merkezi',
+      city: 'Corum',
+      district: 'Merkez',
+      address: 'Bahcelievler Mah. No:18, Merkez',
+      price_per_hour: 220,
+      rating: 4.7,
+      reviews_count: 43,
+      field_type: 'Kapali Saha',
+      capacity: '6+6',
+      description: 'Corum\'un en modern hali saha kompleksi. Kafeteryasi ve tribunu ile tam donanim.',
+      amenities: ['Otopark', 'Dus', 'Soyunma Odasi', 'Kafe', 'Tribun', 'WiFi'],
+      images: ['https://images.unsplash.com/photo-1551958219-acbc595d9e47?w=800']
     }
   ];
 
